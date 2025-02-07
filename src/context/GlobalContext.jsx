@@ -6,15 +6,24 @@ const GlobalContext = createContext();
 const GlobalProvider = ({ children }) => {
 
     const api_url = import.meta.env.VITE_API_URL;
+    const [movies, setMovies] = useState([])//non dichiaro null perchè altrimenti avrò un errore generato dalla chiamata asincrona
 
     const fetchMovies = () => {
-        console.log(api_url);
+        axios.get(api_url)
+            .then(res => {
+                console.log(res.data);
+                setMovies(res.data);
+
+            })
+            .catch(err => console.log(err));
+
 
     }
 
 
     const value = {
-        fetchMovies
+        fetchMovies,
+        movies
     }
 
     return (
