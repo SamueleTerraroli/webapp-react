@@ -1,6 +1,14 @@
+import { NavLink } from "react-router-dom"
+
 const Header = () => {
     return (
-        <div>Header</div>
+        <header>
+            <nav className="navbar">
+                <div className="container-fluid">
+                    <NavLink className='navbar-brand' aria-current='page' to='/'>MovieHub</NavLink>
+                </div>
+            </nav>
+        </header>
     )
 }
 
