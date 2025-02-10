@@ -1,6 +1,8 @@
 import { useGlobalContext } from "../context/GlobalContext";
 import { useEffect } from "react";
 
+import MovieCard from "../components/movieCard";
+
 const HomePage = () => {
 
     const { fetchMovies, movies } = useGlobalContext();
@@ -9,7 +11,7 @@ const HomePage = () => {
         return movies.map(movie => {
             return (
                 <div className="col" key={movie.id}>
-                    {movie.title}
+                    <MovieCard movieData={movie} />
                 </div>
             )
         })

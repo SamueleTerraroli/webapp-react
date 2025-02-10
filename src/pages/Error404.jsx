@@ -1,8 +1,11 @@
-import React from 'react'
+import { NavLink } from "react-router-dom"
 
 const Error404 = () => {
     return (
-        <div>Error404</div>
+        <div>
+            <h2>Pagina non trovata</h2>
+            <NavLink to='/' className='btn btn-primary'> Torna alla Homepage</NavLink>
+        </div>
     )
 }
 

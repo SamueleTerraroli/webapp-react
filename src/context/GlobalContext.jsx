@@ -7,6 +7,8 @@ const GlobalProvider = ({ children }) => {
 
     const api_url = import.meta.env.VITE_API_URL;
     const [movies, setMovies] = useState([])//non dichiaro null perchè altrimenti avrò un errore generato dalla chiamata asincrona
+    const [movie, setMovie] = useState([]);
+
 
     const fetchMovies = () => {
         axios.get(api_url)
@@ -20,10 +22,27 @@ const GlobalProvider = ({ children }) => {
 
     }
 
+    const fetchMovie = (id, redirect) => {
+        axios.get(`${api_url}/${id}`)
+            .then(res => {
+                console.log(res.data);
+                setMovie(res.data);
+
+            })
+            .catch(err => {
+
+                console.log(err)
+                if (err.status === 404) redirect();
+
+            });
+    }
+
 
     const value = {
         fetchMovies,
-        movies
+        movies,
+        fetchMovie,
+        movie
     }
 
     return (
