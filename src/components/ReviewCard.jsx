@@ -1,9 +1,9 @@
 import StarRating from "./StarRating"
 
 
-const ReviewCard = ({ reviews }) => {
+const ReviewCard = ({ review }) => {
 
-    const { text, name, vote } = reviews;
+    const { text, name, vote } = review;
     return (
         <div className="card">
             <div className="card-body">

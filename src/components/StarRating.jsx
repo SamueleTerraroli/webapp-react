@@ -5,7 +5,7 @@ const StarRating = ({ vote }) => {
     const renderStars = () => {
         const stars = [];
         for (let i = 0; i < 5; i++) {
-            stars.push(<i className={`bi bi-star${i < vote ? '-fill' : ''}`}></i>)
+            stars.push(<i className={`bi bi-star${i < vote ? '-fill' : ''}`} key={i}></i>)
         }
         return stars;
     }

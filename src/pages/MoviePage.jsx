@@ -12,7 +12,7 @@ const MoviePage = () => {
     const redirect = useNavigate();
 
     const renderReviews = () => {
-        movie.reviews.map(item => <ReviewCard key={item.id} review={item} />)
+        return movie.reviews.map(item => <ReviewCard key={item.id} review={item} />)
     }
 
     useEffect(() => fetchMovie(id, () => redirect('/404')), [])
