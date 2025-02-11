@@ -2,6 +2,7 @@ import { useParams, NavLink, useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 import ReviewCard from "../components/ReviewCard";
+import ReviewForm from "../components/ReviewForm";
 
 import StarRating from "../components/StarRating";
 
@@ -33,6 +34,9 @@ const MoviePage = () => {
             </header>
             <section>
                 {movie?.reviews && renderReviews()}
+            </section>
+            <section>
+                <ReviewForm movie_id={movie?.id} fetchData={fetchMovie} />
             </section>
             <footer>
                 <NavLink className='btn btn-primary' aria-current='page' to='/'>Torna all'elenco</NavLink>
