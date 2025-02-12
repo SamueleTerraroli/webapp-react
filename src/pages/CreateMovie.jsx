@@ -12,11 +12,15 @@ const CreateMovie = () => {
     const [formData, setFormData] = useState(initialData);
 
     const handleSetValue = (e) => {
-        console.log(e.target)
+        //console.log(e.target)
+        const { value, name } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(formData);
+
     }
 
     return (
