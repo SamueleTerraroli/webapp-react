@@ -6,20 +6,33 @@ const CreateMovie = () => {
         title: '',
         director: '',
         abstract: '',
-        image: null
+        image: ''
 
     }
     const [formData, setFormData] = useState(initialData);
 
     const handleSetValue = (e) => {
-        //console.log(e.target)
-        const { value, name } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }))
+        //console.log(e.target.files[0])
+        const { value, name, files } = e.target;
+        if (name === 'image' && files && files.length > 0) {
+            setFormData(prev => ({ ...prev, image: files[0] }))
+        } else {
+
+            setFormData((prev) => ({ ...prev, [name]: value }))
+        }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
+
+        const dataToSend = new FormData();
+        for (let key in formData) {
+            console.log(key, formData[key]);
+            dataToSend.append(key, formData[key]);
+        }
+        console.log(dataToSend);
+
 
     }
 
@@ -32,7 +45,7 @@ const CreateMovie = () => {
             <section className="card-body">
                 <form action="#" onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label>name</label>
+                        <label>Nome</label>
                         <input
                             name="title"
                             className="form-control my-3"
@@ -43,7 +56,7 @@ const CreateMovie = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label>Director</label>
+                        <label>Regista</label>
                         <input
                             name="director"
                             className="form-control my-3"
@@ -59,7 +72,6 @@ const CreateMovie = () => {
                             name="image"
                             className="form-control my-3"
                             type="file"
-                            value={formData.image}
                             onChange={handleSetValue}
                         />
                     </div>
