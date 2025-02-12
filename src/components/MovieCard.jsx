@@ -12,7 +12,7 @@ const MovieCard = ({ movieData }) => {
                 {image_url && <img className="card-image-top" src={image_url} alt={title} />}
                 <div className="card-body">
                     <h4 className="card-title">{title}</h4>
-                    {average_vote && <StarRating vote={average_vote} />}
+                    {average_vote && <StarRating vote={average_vote} /> || 'Nessuna recensione disponibile'}
                     <div className="my-3">
                         <NavLink className='btn btn-primary' aria-current='page' to={`movies/${id}`}>Scopri di più</NavLink>
                     </div>

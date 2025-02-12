@@ -21,7 +21,7 @@ const MoviePage = () => {
     return (
         <>
             <header>
-                <div className="d-flex">
+                <div className="d-flex row-cols-2">
                     {movie?.image && <img src={movie?.image_url} alt={movie?.title} className="img-movie-detail" />}
                     <div className="p-4">
                         <h1>{movie?.title}</h1>
